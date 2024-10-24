@@ -20,11 +20,13 @@ s3 = session.client(
 )
 
 
+
 # Function to upload files to Vultr
 def upload_to_vultr(file_name, object_name=None):
     if object_name is None:
         object_name = file_name
 
+    
     # Check if the file exists
     if not os.path.exists(file_name):
         print(f"Error: The file '{file_name}' does not exist.")
@@ -41,6 +43,7 @@ def upload_to_vultr(file_name, object_name=None):
         print("Error: Partial credentials provided.")
     except Exception as e:
         print(f"An unexpected error occurred during upload: {e}")
+
 
 
 # Function to capture image from the drone (or webcam)
@@ -104,6 +107,7 @@ def main():
         if not detect_duplicate_face("animal_image.jpg"):
             # Step 5: Upload to Vultr Cloud if not a duplicate
             upload_to_vultr("animal_image.jpg")
+
 
 
 # Run the main program
